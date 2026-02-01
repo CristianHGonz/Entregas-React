@@ -1,0 +1,37 @@
+.error {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 80vh;
+  flex-direction: column;
+}
+.ups {
+  margin-bottom: 2rem;
+  font-size: 4rem;
+  color: red;
+}
+.texto {
+  font-size: 2rem;
+}
+.toca {
+  font-size: 1rem;
+  margin-bottom: 2rem;
+}
+.btn {
+  grid-area: boton;
+  margin: 1rem;
+  background-color: #f5f5f5;
+  border: rgba(236, 52, 28, 0.774) 2px solid;
+  border-radius: 10px;
+  width: 10rem;
+  height: 2.5rem;
+  text-align: center;
+  padding: 0.4rem;
+}
+.btn:hover {
+  background-color: rgba(236, 52, 28, 0.774);
+  color: white;
+  cursor: pointer;
+  transform: scale(1.05);
+  transition: all 0.3s ease-in-out;
+}
