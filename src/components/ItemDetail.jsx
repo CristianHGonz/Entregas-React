@@ -16,7 +16,7 @@ export const ItemDetail = ({ detalleProd }) => {
         <p className={styles.descripcion}>{detalleProd?.description}</p>
         <p className={styles.precio}>${detalleProd?.price}</p>
         <div className={styles.stock}>
-          <ItemCount />
+          <ItemCount detalleProd={detalleProd} />
           <p className={styles.texto}> {detalleProd?.stock} Stock disponible</p>
         </div>
         <Link to="/">

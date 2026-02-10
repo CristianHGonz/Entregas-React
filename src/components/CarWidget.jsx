@@ -1,8 +1,10 @@
 import Badge from "@mui/material/Badge";
 import { styled } from "@mui/material/styles";
-
 import ShoppingCartIcon from "@mui/icons-material/ShoppingCart";
 import styles from "../styles/CarWidget.module.css";
+import { useContext } from "react";
+import { CartContext } from "../context/CartContext";
+import { useNavigate } from "react-router";
 
 const StyledBadge = styled(Badge)(({ theme }) => ({
   "& .MuiBadge-badge": {
@@ -14,11 +16,21 @@ const StyledBadge = styled(Badge)(({ theme }) => ({
 }));
 
 export const CarWidget = () => {
+  const { totalDeProductos } = useContext(CartContext);
+  const productosTotales = totalDeProductos();
+  const navigate = useNavigate();
+
   return (
     <div className={styles.car}>
-      <StyledBadge badgeContent={40} color="secondary" sx={{ fontSize: 40 }}>
-        <ShoppingCartIcon />
-      </StyledBadge>
+      <button onClick={() => navigate("/tusCompras")}>
+        <StyledBadge
+          badgeContent={productosTotales}
+          color="secondary"
+          sx={{ fontSize: 40 }}
+        >
+          <ShoppingCartIcon />
+        </StyledBadge>
+      </button>
     </div>
   );
 };

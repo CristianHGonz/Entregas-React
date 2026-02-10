@@ -1,21 +1,23 @@
-import { useState } from "react";
+import { useState, useContext } from "react";
+import { CartContext } from "../context/CartContext";
 import styles from "../styles/ItemCount.module.css";
 
-export const ItemCount = () => {
-  const [contar, setContar] = useState(0);
+export const ItemCount = ({ detalleProd }) => {
+  const [contar, setContar] = useState(1);
+
+  const { addCarrito } = useContext(CartContext);
 
   const agregar = () => {
     setContar(contar + 1);
   };
   const restar = () => {
-    if (contar <= 0) {
-      alert("no puede tener menos de 0");
+    if (contar === 1) {
       return;
     }
     setContar(contar - 1);
   };
-  const resetear = () => {
-    setContar(0);
+  const fncAgregar = () => {
+    addCarrito({ ...detalleProd, cantidad: contar });
   };
 
   return (
@@ -27,8 +29,8 @@ export const ItemCount = () => {
       <button onClick={restar} className={styles.resta}>
         Eliminar
       </button>
-      <button onClick={resetear} className={styles.reset}>
-        Resetear
+      <button onClick={fncAgregar} className={styles.agregar}>
+        AGREGAR
       </button>
     </div>
   );

@@ -1,0 +1,68 @@
+.divModal {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  background-color: rgba(50, 50, 35, 0.9);
+
+  width: 100vw;
+  height: 100vh;
+}
+.divContenido {
+  display: flex;
+  flex-direction: column;
+  width: 60rem;
+  height: 30rem;
+  background-color: #f4f4f4;
+  justify-content: center;
+  align-items: center;
+}
+.productos {
+  display: grid;
+  grid-template-columns: 1fr 1fr 1fr;
+  grid-template-areas:
+    "img titulo titulo titulo"
+    "img descripcion descripcion descripcion"
+    "cantidad precio sumar restar";
+
+  border: 3px solid black;
+  width: 40rem;
+  padding: 0.5rem;
+  align-items: center;
+}
+.imgCarrito {
+  grid-area: img;
+  width: 5rem;
+  height: 5rem;
+  background-color: red;
+}
+
+.titulo {
+  grid-area: titulo;
+  background-color: yellow;
+}
+
+.descripcion {
+  grid-area: descripcion;
+  background-color: peru;
+}
+
+.cantidad {
+  grid-area: cantidad;
+  background-color: antiquewhite;
+}
+
+.precio {
+  grid-area: precio;
+  background-color: cadetblue;
+}
+
+.suma {
+  grid-area: sumar;
+  background-color: coral;
+}
+
+.resta {
+  grid-area: restar;
+  background-color: darkgreen;
+}
