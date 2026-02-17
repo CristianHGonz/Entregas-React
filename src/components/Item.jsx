@@ -5,10 +5,12 @@ export const Item = ({ prod }) => {
   const navigate = useNavigate();
   return (
     <div className={styles.divSecundario}>
-      <h5 className={styles.titulo}>{prod.title}</h5>
-      <img className={styles.img} src={prod.thumbnail} alt={prod.title} />
-      <p>CATEGORÍA: {prod.category}</p>
-      <p className={styles.descripcion}>{prod.description}</p>
+      <h5 className={styles.titulo}>{prod.nombre}</h5>
+      <div className={styles.divImg}>
+        <img className={styles.img} src={prod.imagen} alt={prod.nombre} />
+      </div>
+      <p>CATEGORÍA: {prod.categoria}</p>
+      <p className={styles.descripcion}>{prod.descripcion}</p>
       <button
         className={styles.boton}
         onClick={() => navigate(`/detalle/${prod.id}`)}

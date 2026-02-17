@@ -1,4 +1,9 @@
 .car {
-  margin-top: 1rem;
-  margin-right: 3rem;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  place-self: center;
+  place-content: center;
+  place-items: center;
+  margin: 1rem 4rem;
 }

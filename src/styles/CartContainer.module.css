@@ -1,21 +1,27 @@
 .divModal {
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
-  align-items: center;
-  background-color: rgba(50, 50, 35, 0.9);
-
+  position: fixed;
+  top: 0;
+  left: 0;
   width: 100vw;
   height: 100vh;
-}
-.divContenido {
+  background: rgba(0, 0, 0, 0.4);
+  backdrop-filter: blur(4px);
   display: flex;
-  flex-direction: column;
-  width: 60rem;
-  height: 30rem;
-  background-color: #f4f4f4;
   justify-content: center;
   align-items: center;
+
+  z-index: 1000;
+}
+.divContenido {
+  background: white;
+  width: 90%;
+  max-width: 750px;
+  height: 35rem;
+  max-height: 50vh;
+  border-radius: 12px;
+  padding: 24px;
+  box-shadow: 0 10px 25px rgba(0, 0, 0, 0.2);
+  overflow-x: auto;
 }
 .productos {
   display: grid;
@@ -24,7 +30,7 @@
     "img titulo titulo titulo"
     "img descripcion descripcion descripcion"
     "cantidad precio sumar restar";
-
+  place-self: center;
   border: 3px solid black;
   width: 40rem;
   padding: 0.5rem;

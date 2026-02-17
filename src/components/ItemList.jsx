@@ -1,7 +1,13 @@
 import { Item } from "./Item";
 import styles from "../styles/ItemListContainer.module.css";
 
-export const ItemList = ({ getProducts }) => {
+import { Loaders } from "./Loaders";
+
+export const ItemList = ({ getProducts = [] }) => {
+  if (getProducts.length === 0) {
+    return <Loaders />;
+  }
+
   return (
     <div className={styles.divPrincipal}>
       {getProducts.map((prod) => (

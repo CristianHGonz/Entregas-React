@@ -6,15 +6,17 @@ export const ItemDetail = ({ detalleProd }) => {
   return (
     <div className={styles.divPrincipal}>
       <div className={styles.divSecundario}>
-        <h5 className={styles.titulo}>{detalleProd?.title}</h5>
-        <img
-          className={styles.img}
-          src={detalleProd?.thumbnail}
-          alt={detalleProd?.title}
-        />
+        <h5 className={styles.titulo}>{detalleProd?.nombre}</h5>
+        <div className={styles.img}>
+          <img
+            className={styles.imgProducto}
+            src={detalleProd?.imagen}
+            alt={detalleProd?.nombre}
+          />
+        </div>
 
-        <p className={styles.descripcion}>{detalleProd?.description}</p>
-        <p className={styles.precio}>${detalleProd?.price}</p>
+        <p className={styles.descripcion}>{detalleProd?.descripcion}</p>
+        <p className={styles.precio}>${detalleProd?.precio}</p>
         <div className={styles.stock}>
           <ItemCount detalleProd={detalleProd} />
           <p className={styles.texto}> {detalleProd?.stock} Stock disponible</p>

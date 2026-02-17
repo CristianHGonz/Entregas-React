@@ -28,7 +28,7 @@ export const CarWidget = () => {
           color="secondary"
           sx={{ fontSize: 40 }}
         >
-          <ShoppingCartIcon />
+          <ShoppingCartIcon fontSize="medium" />
         </StyledBadge>
       </button>
     </div>
