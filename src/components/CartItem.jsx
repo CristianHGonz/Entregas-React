@@ -1,5 +1,5 @@
 import styles from "../styles/CartContainer.module.css";
-import { UseCart } from "../context/useCart";
+import { UseCart } from "../context/UseCart";
 import DeleteIcon from "@mui/icons-material/Delete";
 import { pink } from "@mui/material/colors";
 
