@@ -1,6 +1,6 @@
 import { useState } from "react";
 import { useNavigate } from "react-router";
-import { UseCart } from "../context/useCart";
+import { UseCart } from "../context/UseCart";
 import { ordenCompra, descontarProducto } from "../firebase/db";
 import { serverTimestamp } from "firebase/firestore";
 import { useSnackbar } from "notistack";
