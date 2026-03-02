@@ -4,7 +4,7 @@
   box-sizing: border-box;
 }
 
-.layout {
+.navbar {
   width: 90%;
   margin: 0 auto;
   background-color: #ab957e;
@@ -17,4 +17,12 @@
 }
 html {
   background-color: #ab957e;
+}
+
+.footer {
+  width: 90%;
+  position: fixed;
+  bottom: 0;
+  left: 50%;
+  transform: translateX(-50%);
 }

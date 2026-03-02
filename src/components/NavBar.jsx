@@ -1,5 +1,5 @@
 import styles from "../styles/NavBar.module.css";
-import { Link } from "react-router";
+import { NavLink } from "react-router";
 import { CarWidget } from "./CarWidget";
 import logo from "../assets/logo1.png";
 import { useNavigate } from "react-router";
@@ -9,7 +9,6 @@ export const NavBar = ({ categoria }) => {
   return (
     <div className={`${styles.navbar} navbar bg-base-100 shadow-sm`}>
       <div className="navbar-start">
-        {" "}
         <img
           className={styles.logo}
           src={logo}
@@ -20,22 +19,20 @@ export const NavBar = ({ categoria }) => {
         />
       </div>
       <div className="navbar-center flex flex-col  lg:flex">
-        {/* <ul className="menu menu-horizontal px-1"> */}
-        {/* <li> */}
-        {/* <details> */}
-        {/* <summary className={styles.cat}>CATEGORIAS</summary> */}
         <ul className={styles.ul}>
           {categoria.map((cat) => (
             <li className={styles.li} key={cat}>
-              <Link className={styles.link} to={`/categoria/${cat}`}>
+              <NavLink
+                to={`/categoria/${cat}`}
+                className={({ isActive }) =>
+                  `${styles.link} ${isActive ? "underline underline-offset-4 decoration-2" : ""}`
+                }
+              >
                 {cat}
-              </Link>
+              </NavLink>
             </li>
           ))}
         </ul>
-        {/* </details> */}
-        {/* </li>
-        </ul> */}
       </div>
       <div className="navbar-end">
         <CarWidget />

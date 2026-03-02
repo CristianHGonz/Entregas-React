@@ -6,4 +6,22 @@
   place-content: center;
   place-items: center;
   margin: 1rem 4rem;
+  cursor: pointer;
+}
+.carrito:disabled {
+  opacity: 0.3;
+}
+@media (max-width: 768px) {
+}
+.car:disabled {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 100%;
+}
+.car {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 100%;
 }

@@ -15,6 +15,7 @@
     "img img precio"
     "img img stock"
     "img img boton";
+  grid-template-columns: 0.5fr 0.5fr 1fr;
   justify-content: center;
   align-items: center;
   flex-wrap: wrap;
@@ -22,8 +23,9 @@
   text-align: center;
   place-items: center;
   margin: 0.5rem;
-  width: 75rem;
-  height: 45rem;
+  width: 100%;
+  max-width: 1200px;
+  height: auto;
   border-radius: 10px;
   gap: 2rem;
 }
@@ -38,18 +40,18 @@
 }
 .img {
   grid-area: img;
-
-  width: 30rem;
+  width: 24rem;
+  height: 34rem;
   border: 1px solid #bebd79;
   margin: 0 auto;
-}
-.imgProducto {
   border-bottom: 4px solid rgba(236, 52, 28, 0.774);
   border-radius: 1rem;
-
+}
+.imgProducto {
   width: 100%;
   height: 100%;
   object-fit: cover;
+  border-radius: 1rem;
 }
 .descripcion {
   grid-area: descripcion;
@@ -60,13 +62,13 @@
 }
 .precio {
   grid-area: precio;
-  font-size: 5.5rem;
-  font-weight: bold;
+  font-size: 3.5rem;
+  font-weight: 400;
 }
 .stock {
   grid-area: stock;
   font-size: 1rem;
-  font-weight: bold;
+  font-weight: 200;
 }
 .texto {
   text-align: center;
@@ -101,5 +103,129 @@
   to {
     opacity: 1;
     transform: scale(1) translateZ(0);
+  }
+}
+
+@media (max-width: 1400px) {
+  .divSecundario {
+    width: 90%;
+    height: auto;
+    padding: 2rem;
+  }
+
+  .img {
+    width: 20rem;
+    height: 30rem;
+  }
+
+  .titulo {
+    font-size: 2.5rem;
+  }
+
+  .precio {
+    font-size: 3rem;
+  }
+}
+
+@media (max-width: 1024px) {
+  .divSecundario {
+    width: 95%;
+    grid-template-columns: 1fr 1fr;
+    grid-template-areas:
+      "titulo titulo"
+      "img descripcion"
+      "img precio"
+      "img stock"
+      "img boton";
+    gap: 1.5rem;
+  }
+
+  .img {
+    width: 18rem;
+    height: 26rem;
+  }
+
+  .descripcion {
+    margin: 2rem;
+  }
+
+  .precio {
+    font-size: 2.5rem;
+  }
+}
+
+@media (max-width: 768px) {
+  .divSecundario {
+    grid-template-columns: 1fr;
+    grid-template-areas:
+      "titulo"
+      "img"
+      "descripcion"
+      "precio"
+      "stock"
+      "boton";
+    width: 95%;
+    padding: 1.5rem;
+  }
+
+  .img {
+    width: 100%;
+    height: 24rem;
+  }
+
+  .titulo {
+    font-size: 2rem;
+  }
+
+  .descripcion {
+    margin: 1rem;
+    font-size: 0.95rem;
+  }
+
+  .precio {
+    font-size: 2.2rem;
+  }
+
+  .boton {
+    width: 100%;
+  }
+}
+
+@media (max-width: 480px) {
+  .divPrincipal {
+    margin-top: 26rem;
+  }
+
+  .divSecundario {
+    width: 100%;
+    margin: 0.5rem;
+    padding: 1rem;
+    border-radius: 0;
+  }
+
+  .titulo {
+    font-size: 1.6rem;
+  }
+
+  .img {
+    height: 20rem;
+  }
+
+  .descripcion {
+    font-size: 0.9rem;
+    margin: 0.5rem;
+  }
+
+  .precio {
+    font-size: 1.8rem;
+  }
+
+  .stock {
+    font-size: 0.9rem;
+  }
+
+  .boton {
+    height: 2.2rem;
+    font-size: 0.9rem;
   }
 }

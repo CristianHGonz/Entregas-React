@@ -5,15 +5,16 @@
   justify-content: center;
   margin-top: 4.5rem;
   background-color: #f2e6d8;
+  margin-bottom: 3rem;
   padding: 1rem;
 }
 .divSecundario {
   background-color: #e0bea2;
   text-align: center;
   place-items: center;
-  margin: 1rem;
+  margin: 0.5rem;
   width: 20rem;
-  height: 32rem;
+  height: 38rem;
   border-radius: 10px;
 }
 .divSecundario:hover {
@@ -29,10 +30,10 @@
 }
 .divImg {
   width: 100%;
-  height: 300px;
+  height: 390px;
   overflow: hidden;
   border-radius: 8px;
-  margin: 0.5rem;
+  margin: 0.1rem;
 }
 
 .img {
@@ -44,14 +45,22 @@
   height: 90%;
   object-fit: cover;
 }
+.categoria {
+  margin: 0.1rem;
+  font-weight: 600;
+  font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
+}
 .descripcion {
   font-style: oblique;
-  margin: 1rem;
+  margin: 0 0.5rem;
+  margin-bottom: 1rem;
   font-size: 12px;
+  width: 10;
+  height: 2rem;
 }
 
 .boton {
-  margin: 1rem;
+  margin: 0.5rem;
   background-color: #f5f5f5;
   border: rgba(236, 52, 28, 0.774) 2px solid;
   border-radius: 10px;

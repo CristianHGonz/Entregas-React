@@ -22,7 +22,11 @@ export const CarWidget = () => {
 
   return (
     <div className={styles.car}>
-      <button onClick={() => navigate("/tusCompras")}>
+      <button
+        className={styles.carrito}
+        onClick={() => navigate("/tusCompras")}
+        disabled={productosTotales <= 0}
+      >
         <StyledBadge
           badgeContent={productosTotales}
           color="secondary"

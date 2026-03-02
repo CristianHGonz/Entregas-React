@@ -9,7 +9,7 @@ export const Item = ({ prod }) => {
       <div className={styles.divImg}>
         <img className={styles.img} src={prod.imagen} alt={prod.nombre} />
       </div>
-      <p>CATEGORÍA: {prod.categoria}</p>
+      <p className={styles.categoria}>CATEGORÍA: {prod.categoria}</p>
       <p className={styles.descripcion}>{prod.descripcion}</p>
       <button
         className={styles.boton}

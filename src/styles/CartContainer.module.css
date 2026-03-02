@@ -1,4 +1,15 @@
+.cerrar {
+  display: flex;
+  justify-content: space-between;
+  font-weight: 700;
+  background-color: rgb(191, 221, 249);
+  padding: 0.3rem;
+  border-radius: 0 0.5rem;
+}
+
 .divModal {
+  display: flex;
+  flex-direction: column;
   position: fixed;
   top: 0;
   left: 0;
@@ -22,53 +33,226 @@
   padding: 24px;
   box-shadow: 0 10px 25px rgba(0, 0, 0, 0.2);
   overflow-x: auto;
+  position: relative;
+}
+.productos:nth-child(even) {
+  background-color: #f2f2f2;
+}
+.tachito {
+  position: absolute;
+  top: 0;
+  right: 0;
+  margin: 0.4rem;
 }
 .productos {
   display: grid;
-  grid-template-columns: 1fr 1fr 1fr;
+  grid-template-columns: 0.5fr 1fr 1.5fr;
   grid-template-areas:
-    "img titulo titulo titulo"
-    "img descripcion descripcion descripcion"
-    "cantidad precio sumar restar";
-  place-self: center;
-  border: 3px solid black;
-  width: 40rem;
+    "img titulo titulo"
+    "img descripcion  descripcion"
+    "img  cantidad precioIndividual "
+    "botones subtotal subtotal ";
+  font-family: Cambria, Cochin, Georgia, Times, "Times New Roman", serif;
+  gap: 0.2rem;
+  width: 100%;
+  max-width: 100%;
   padding: 0.5rem;
-  align-items: center;
+  place-self: center;
+  border-radius: 1rem;
+  min-width: 0;
+  margin: 0.5rem 0rem;
+  opacity: 0;
+  transform: translateY(15px);
+  animation: productoIn 0.3s ease forwards;
+  transition:
+    transform 0.2s ease,
+    box-shadow 0.2s ease;
 }
 .imgCarrito {
   grid-area: img;
-  width: 5rem;
-  height: 5rem;
-  background-color: red;
+  height: 6.5rem;
 }
-
+.img {
+  margin: 0.5rem;
+  border-radius: 0 1rem;
+  width: 90%;
+  height: 90%;
+  object-fit: contain;
+}
 .titulo {
   grid-area: titulo;
-  background-color: yellow;
+  text-align: center;
+  font-weight: 700;
+  text-decoration: underline;
+  place-self: center;
+  font-size: 14px;
 }
-
 .descripcion {
   grid-area: descripcion;
-  background-color: peru;
+  text-align: justify;
+  font-size: 12px;
+  margin-left: 1rem;
 }
-
 .cantidad {
   grid-area: cantidad;
-  background-color: antiquewhite;
+  font-size: 12px;
+  text-align: left;
+  margin-left: 1rem;
+  font-weight: 800;
+}
+.precioIndividual {
+  grid-area: precioIndividual;
+  margin-left: 1rem;
+  font-size: 12px;
+  text-align: right;
+}
+.precioSubTotal {
+  grid-area: subtotal;
+  margin-left: 1rem;
+  font-size: 12px;
+  text-align: right;
+  font-weight: 900;
 }
 
-.precio {
-  grid-area: precio;
-  background-color: cadetblue;
+.botones {
+  grid-area: botones;
+  display: flex;
+  gap: 0.2rem;
+  justify-content: center;
+  font-weight: 900;
+  font-size: 1rem;
+  cursor: pointer;
+
+  transition:
+    transform 0.1s ease,
+    box-shadow 0.2s ease;
 }
 
 .suma {
-  grid-area: sumar;
-  background-color: coral;
+  text-align: center;
+  width: 50%;
+  border-radius: 0.5rem;
+  background-color: rgb(181, 236, 181);
+  padding: 0.2rem 0;
 }
 
 .resta {
-  grid-area: restar;
-  background-color: darkgreen;
+  text-align: center;
+  width: 50%;
+  border-radius: 0.5rem;
+  background-color: rgb(238, 178, 178);
+  padding: 0.2rem 0;
+}
+.total {
+  background-color: rgb(191, 221, 249);
+  margin: 2px;
+  width: 100%m;
+  text-align: center;
+  border-radius: 1rem 1rem 0 0;
+  font-family: Cambria, Cochin, Georgia, Times, "Times New Roman", serif;
+  font-weight: 600;
+  padding: 0.3rem;
+}
+.confirmar {
+  display: inline-block;
+  width: 100%;
+  padding: 0.6rem;
+  border-radius: 0 0 1rem 1rem;
+  border: none;
+  background-color: rgb(191, 221, 249);
+  font-weight: 600;
+  cursor: pointer;
+  transition:
+    transform 0.2s ease,
+    box-shadow 0.2s ease,
+    background-color 0.2s ease;
+}
+
+.confirmar:hover {
+  background-color: rgb(170, 245, 186);
+  transform: translateY(2px);
+  background-color: rgb(170, 230, 175);
+  box-shadow: 0 8px 15px rgba(0, 0, 0, 0.15);
+}
+.confirmar:active {
+  transform: scale(0.95);
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+}
+@keyframes productoIn {
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+.productos:hover {
+  transform: translateY(-18px);
+  box-shadow: 0 6px 14px rgba(0, 0, 0, 0.55);
+}
+.suma:hover,
+.resta:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.15);
+}
+.suma:active,
+.resta:active {
+  transform: scale(0.92);
+}
+.vaciar {
+  display: inline-block;
+  width: 100%;
+  padding: 0.5rem;
+  border: none;
+  margin: 5px 0;
+  background-color: rgb(191, 221, 249);
+  font-weight: 600;
+  cursor: pointer;
+  transition:
+    transform 0.2s ease,
+    box-shadow 0.2s ease,
+    background-color 0.2s ease;
+}
+
+.vaciar:hover {
+  background-color: rgb(235, 108, 108);
+  transform: translateY(-2px);
+  background-color: rgb(233, 100, 100);
+  box-shadow: 0 8px 15px rgba(0, 0, 0, 0.15);
+}
+.vaciar:active {
+  transform: scale(0.95);
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+}
+.carritoVacio {
+  text-align: center;
+  font-size: 1.2rem;
+  font-weight: 700;
+  margin: 1rem 0;
+}
+.volver {
+  display: flex;
+  place-self: center;
+  place-content: center;
+  width: 50%;
+  margin-top: 3rem;
+  border-radius: 1rem;
+  padding: 0.6rem;
+  border: none;
+  background-color: rgb(191, 221, 249);
+  font-weight: 600;
+  cursor: pointer;
+  transition:
+    transform 0.2s ease,
+    box-shadow 0.2s ease,
+    background-color 0.2s ease;
+}
+
+.volver:hover {
+  background-color: rgb(170, 245, 186);
+  transform: translateY(2px);
+  background-color: rgb(170, 230, 175);
+  box-shadow: 0 8px 15px rgba(0, 0, 0, 0.15);
+}
+.volver:active {
+  transform: scale(0.95);
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
 }

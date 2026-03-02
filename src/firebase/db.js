@@ -1,5 +1,6 @@
-import { getFirestore, collection, getDocs, query, where, doc, getDoc, addDoc } from "firebase/firestore";
+import { getFirestore, collection, getDocs, query, where, doc, getDoc, addDoc, runTransaction } from "firebase/firestore";
 import { app } from "./config";
+
 
 const db = getFirestore(app);
 
@@ -52,10 +53,50 @@ export const ordenCompra = async (orden) => {
     try {
         const docRef = await addDoc(collection(db, "compra"), orden
         );
-        console.log("Document written with ID: ", docRef.id);
+
+        return docRef.id
+
+
     } catch (e) {
-        console.error("Error adding document: ", e);
+        console.error(e);
     }
 }
 
+export async function validarStock(id, cantidad) {
+    const sfDocRef = doc(db, "accesorios", id);
 
+    const sfDoc = await getDoc(sfDocRef);
+
+    if (!sfDoc.exists()) {
+        throw new Error("El producto no existe");
+    }
+
+    const stockActual = sfDoc.data().stock;
+
+    if (stockActual < cantidad) {
+        throw new Error("No hay suficiente stock disponible del producto " + sfDoc.data().nombre);
+    }
+
+    return true;
+}
+export async function descontarProducto(id, cantidad) {
+    const sfDocRef = doc(db, "accesorios", id);
+
+    await runTransaction(db, async (transaction) => {
+        const sfDoc = await transaction.get(sfDocRef);
+
+        if (!sfDoc.exists()) {
+            throw new Error("El producto no existe");
+        }
+
+        const stockActual = sfDoc.data().stock;
+
+        if (stockActual < cantidad) {
+            throw new Error("No hay suficiente stock disponible");
+        }
+
+        transaction.update(sfDocRef, {
+            stock: stockActual - cantidad,
+        });
+    });
+}

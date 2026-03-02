@@ -1,61 +1,67 @@
+import { useState } from "react";
+import { useNavigate } from "react-router";
 import { UseCart } from "../context/useCart";
-import { ordenCompra } from "../firebase/db";
+import { ordenCompra, descontarProducto } from "../firebase/db";
 import { serverTimestamp } from "firebase/firestore";
+import { useSnackbar } from "notistack";
+import { CompraExitosa } from "./CompraExitosa";
+import { CheckOutDetail } from "./CheckOutDetail";
 
 export const CheckOut = () => {
-  const { cart } = UseCart();
-  const mandarCompra = (e) => {
+  const navigate = useNavigate();
+  const { cart, vaciarCarrito } = UseCart();
+  const { enqueueSnackbar } = useSnackbar();
+  const [compraId, setCompraId] = useState(null);
+
+  const mandarCompra = async (e) => {
     e.preventDefault();
     const form = e.target;
-    const nombre = form.nombre.value;
-    const direccion = form.direccion.value;
-    const email = form.email.value;
-    const contacto = form.contacto.value;
 
-    ordenCompra({
-      nombre,
-      direccion,
-      email,
-      contacto,
-      cart,
-      time: serverTimestamp(),
-    });
+    const datos = {
+      nombre: form.nombre.value,
+      direccion: form.direccion.value,
+      localidad: form.localidad.value,
+      email: form.email.value,
+      contacto: form.contacto.value,
+    };
+
+    if (Object.values(datos).some((v) => !v)) {
+      enqueueSnackbar("Completá todos los campos obligatorios", {
+        variant: "warning",
+      });
+      return;
+    }
+
+    try {
+      for (let producto of cart) {
+        await descontarProducto(producto.id, producto.cantidad);
+      }
+
+      const id = await ordenCompra({
+        ...datos,
+        cart,
+        time: serverTimestamp(),
+      });
+
+      setCompraId(id);
+      vaciarCarrito();
+
+      setTimeout(() => navigate("/"), 10000);
+    } catch (error) {
+      enqueueSnackbar(error.message, {
+        variant: "error",
+      });
+    }
   };
-  return (
-    <div>
-      <form onSubmit={mandarCompra}>
-        <legend> TU COMPRA </legend>
-        <label> Nombre Completo: </label>
-        <input
-          type="text"
-          name="nombre"
-          id="nombre"
-          placeholder="Bichito de luz"
-        />
-        <br />
-        <label>Direccion:</label>
-        <input
-          type="text"
-          name="direccion"
-          id="direccion"
-          placeholder="Av Siempre Viva 573"
-        />
-        <br />
-        <label> Email: </label>
-        <input type="email" name="Email" id="email" placeholder="mi@mail.com" />
-        <br />
-        <label> Contacto: </label>
-        <input
-          type="number"
-          name="contacto"
-          id="contacto"
-          placeholder="5491150403028"
-        />
-        <br />
-        <button>CONFIRMAR</button>
 
-        <button>CANCELAR</button>
-      </form>
-    </div>
+  if (compraId) {
+    return <CompraExitosa id={compraId} />;
+  }
+
+  return (
+    <CheckOutDetail
+      mandarFormulario={mandarCompra}
+      cancelar={() => navigate("/tusCompras")}
+    />
   );
 };
