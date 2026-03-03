@@ -6,7 +6,7 @@ export const Footer = () => {
   return (
     <footer className={styles.footer}>
       <p className={styles.derechos}>
-        Copyright © 2024 - Todos los derechos reservados
+        Copyright © 2026 - Todos los derechos reservados
       </p>
       <div className={styles.social}>
         <div className={styles.ig}>
